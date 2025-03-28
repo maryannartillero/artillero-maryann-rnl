@@ -6,10 +6,10 @@ const Genders = () => {
   const content = (
     <>
       <div className="row">
-        <div className="col-12">
+        <div className="col-md-4">
           <AddGenderForm />
         </div>
-        <div className="col-12">
+        <div className="col-md-8">
           <GendersTable />
         </div>
       </div>

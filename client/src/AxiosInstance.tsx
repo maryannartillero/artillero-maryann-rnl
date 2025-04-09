@@ -8,11 +8,11 @@ AxiosInstance.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
 
   if (token) {
-    config.headers["Authorization"] = `Bearer $(token)`;
+    config.headers["Authorization"] = `Bearer ${token}`;
   }
 
   if (config.data instanceof FormData) {
-    config.headers["Content-type"] = "multipart/form-data";
+    config.headers["Content-Type"] = "multipart/form-data";
   } else {
     config.headers["Content-Type"] = "application/json";
   }
@@ -25,12 +25,11 @@ AxiosInstance.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (error.response.status != 422) {
-      console.error("Unexpected response error: ", error);
+    if (error.response.status !== 422) {
+      console.error("Unexpected error response: ", error);
     }
 
     return Promise.reject(error);
   }
 );
-
 export default AxiosInstance;

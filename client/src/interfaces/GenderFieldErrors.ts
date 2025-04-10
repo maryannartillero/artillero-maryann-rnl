@@ -1,3 +1,3 @@
 export interface GenderFieldErrors {
-    gender?: string[];
+  gender?: string[];
 }

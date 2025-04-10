@@ -5,11 +5,11 @@ import GenderService from "../../../services/GenderService";
 import Spinner from "../../Spinner";
 import SpinnerSmall from "../../SpinnerSmall";
 
-interface DeleteGenderFormProps {
+interface DeleterGenderFormProps {
   onDeleteGender: (message: string) => void;
 }
 
-const DeleteGenderForm = ({ onDeleteGender }: DeleteGenderFormProps) => {
+const DeleterGenderForm = ({ onDeleteGender }: DeleterGenderFormProps) => {
   const { gender_id } = useParams();
 
   const [state, setState] = useState({
@@ -30,7 +30,7 @@ const DeleteGenderForm = ({ onDeleteGender }: DeleteGenderFormProps) => {
           }));
         } else {
           console.error(
-            "Unexpected status error while getting gender: ",
+            "Unexpected status error while getting gender",
             res.status
           );
         }
@@ -88,12 +88,14 @@ const DeleteGenderForm = ({ onDeleteGender }: DeleteGenderFormProps) => {
   return (
     <>
       {state.loadingGet ? (
-        <div className="text-center mt-5">
+        <div className="text-center m-5">
           <Spinner />
         </div>
       ) : (
         <form onSubmit={handleDestroyGender}>
-          <h3>Are you sure do you want to delete this gender?</h3>
+          <h3 className="text-center">
+            Are you sure you want to delete this gender?
+          </h3>
           <div className="form-group">
             <div className="mb-3">
               <label htmlFor="gender">Gender</label>
@@ -117,9 +119,10 @@ const DeleteGenderForm = ({ onDeleteGender }: DeleteGenderFormProps) => {
               </Link>
               <button
                 type="submit"
-                className="btn btn-danger"
+                className="btn btn-primary"
                 disabled={state.loadingDestroy}
               >
+                {" "}
                 {state.loadingDestroy ? (
                   <>
                     <SpinnerSmall /> Deleting...
@@ -136,4 +139,4 @@ const DeleteGenderForm = ({ onDeleteGender }: DeleteGenderFormProps) => {
   );
 };
 
-export default DeleteGenderForm;
+export default DeleterGenderForm;

@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ErrorHandler from "../../../handler/ErrorHandler";
-import GenderFieldErrors from "../../../interfaces/GenderFieldErrors";
+import { GenderFieldErrors } from "../../../interfaces/GenderFieldErrors";
 import GenderService from "../../../services/GenderService";
 import Spinner from "../../Spinner";
 import SpinnerSmall from "../../SpinnerSmall";
@@ -14,8 +14,8 @@ const EditGenderForm = ({ onGenderUpdate }: EditGenderFormProps) => {
   const { gender_id } = useParams();
 
   const [state, setState] = useState({
-    loadingUpdate: false,
     loadingGet: true,
+    loadingUpdate: false,
     gender_id: 0,
     gender: "",
     errors: {} as GenderFieldErrors,
@@ -76,7 +76,6 @@ const EditGenderForm = ({ onGenderUpdate }: EditGenderFormProps) => {
             ...prevState,
             errors: {} as GenderFieldErrors,
           }));
-
           onGenderUpdate(res.data.message);
         } else {
           console.error(
@@ -115,7 +114,7 @@ const EditGenderForm = ({ onGenderUpdate }: EditGenderFormProps) => {
   return (
     <>
       {state.loadingGet ? (
-        <div className="text-center mt-5">
+        <div className="text-center m-5">
           <Spinner />
         </div>
       ) : (
@@ -128,8 +127,8 @@ const EditGenderForm = ({ onGenderUpdate }: EditGenderFormProps) => {
                 className={`form-control ${
                   state.errors.gender ? "is-invalid" : ""
                 }`}
-                name="gender"
                 id="gender"
+                name="gender"
                 value={state.gender}
                 onChange={handleInputChange}
               />

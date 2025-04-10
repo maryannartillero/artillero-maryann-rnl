@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import ErrorHandler from "../../../handler/ErrorHandler";
-import GenderFieldErrors from "../../../interfaces/GenderFieldErrors";
+import { GenderFieldErrors } from "../../../interfaces/GenderFieldErrors";
 import GenderService from "../../../services/GenderService";
 import SpinnerSmall from "../../SpinnerSmall";
 
@@ -93,7 +93,7 @@ const AddGenderForm = ({ onGenderAdded }: AddGenderFormProps) => {
                   <SpinnerSmall /> Loading...
                 </>
               ) : (
-                "SAVE"
+                "Save"
               )}
             </button>
           </div>

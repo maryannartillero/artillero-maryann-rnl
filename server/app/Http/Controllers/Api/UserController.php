@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
@@ -53,11 +53,12 @@ class UserController extends Controller
         ]);
 
         return response()->json([
-            'message' => 'User Successfully Added'
+            'message' => 'User Successfully Added.'
         ], 200);
     }
 
-    public function updateUser (Request $request, User $user) {
+    public function updateUser(Request $request, User $user)
+    {
         $validated = $request->validate([
             'first_name' => ['required'],
             'middle_name' => ['nullable'],
@@ -87,6 +88,17 @@ class UserController extends Controller
 
         return response()->json([
             'message' => 'User Successfully Updated.'
+        ], 200);
+    }
+
+    public function destroyUser(User $user)
+    {
+        $user->update([
+            'is_deleted' => true
+        ]);
+
+        return response()->json([
+            'message' => 'User Successfully Deleted.'
         ], 200);
     }
 }

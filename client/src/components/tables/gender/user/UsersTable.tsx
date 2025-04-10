@@ -7,9 +7,14 @@ import Spinner from "../../../Spinner";
 interface UsersTableProps {
   refreshUsers: boolean;
   onEditUser: (user: Users) => void;
+  onDeleteUser: (user: Users) => void;
 }
 
-const UsersTable = ({ refreshUsers, onEditUser }: UsersTableProps) => {
+const UsersTable = ({
+  refreshUsers,
+  onEditUser,
+  onDeleteUser,
+}: UsersTableProps) => {
   const [state, setState] = useState({
     loadingUsers: true,
     users: [] as Users[],
@@ -47,15 +52,14 @@ const UsersTable = ({ refreshUsers, onEditUser }: UsersTableProps) => {
     if (user.middle_name) {
       fullName = `${user.last_name}, ${
         user.first_name
-      } ${user.middle_name.charAt(0)}.`;
+      }, ${user.middle_name.charAt(0)}.`;
     } else {
       fullName = `${user.last_name}, ${user.first_name}`;
     }
 
     if (user.suffix_name) {
-      fullName += `${user.suffix_name}`;
+      fullName += ` ${user.suffix_name}`;
     }
-
     return fullName;
   };
 
@@ -104,7 +108,11 @@ const UsersTable = ({ refreshUsers, onEditUser }: UsersTableProps) => {
                     >
                       Edit
                     </button>
-                    <button type="button" className="btn btn-danger">
+                    <button
+                      type="button"
+                      className="btn btn-danger"
+                      onClick={() => onDeleteUser(user)}
+                    >
                       Delete
                     </button>
                   </div>

@@ -1,7 +1,7 @@
 import React, { FormEvent, useEffect, useRef, useState } from "react";
-import ErrorHandler from "../../handler/ErrorHandler";
-import { Users } from "../../interfaces/Users";
-import UserService from "../../services/UserService";
+import ErrorHandler from "../../../handler/ErrorHandler";
+import { Users } from "../../../interfaces/Users";
+import UserService from "../../../services/UserService";
 
 interface DeleteUserFormProps {
   user: Users | null;

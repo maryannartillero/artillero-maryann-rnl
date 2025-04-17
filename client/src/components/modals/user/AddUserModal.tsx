@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import AlertMessage from "../../AlertMessage";
 import SpinnerSmall from "../../SpinnerSmall";
-import AddUserForm from "../../user/AddUserForm";
+import AddUserForm from "../../forms/user/AddUserForm";
 
 interface AddUserModalProps {
   showModal: boolean;

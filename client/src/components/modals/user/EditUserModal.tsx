@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Users } from "../../../interfaces/Users";
 import AlertMessage from "../../AlertMessage";
 import SpinnerSmall from "../../SpinnerSmall";
-import EditUserForm from "../../user/EditUserForm";
+import EditUserForm from "../../forms/user/EditUserForm";
 
 interface EditUserModalProps {
   showModal: boolean;

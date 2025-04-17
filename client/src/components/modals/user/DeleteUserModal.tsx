@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Users } from "../../../interfaces/Users";
 import AlertMessage from "../../AlertMessage";
 import SpinnerSmall from "../../SpinnerSmall";
-import DeleteUserForm from "../../user/DeleteUserForm";
+import DeleteUserForm from "../../forms/user/DeleteUserForm";
 
 interface DeleteUserModalProps {
   showModal: boolean;

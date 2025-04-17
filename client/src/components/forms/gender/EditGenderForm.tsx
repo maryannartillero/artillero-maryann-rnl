@@ -76,6 +76,7 @@ const EditGenderForm = ({ onGenderUpdate }: EditGenderFormProps) => {
             ...prevState,
             errors: {} as GenderFieldErrors,
           }));
+
           onGenderUpdate(res.data.message);
         } else {
           console.error(
@@ -114,7 +115,7 @@ const EditGenderForm = ({ onGenderUpdate }: EditGenderFormProps) => {
   return (
     <>
       {state.loadingGet ? (
-        <div className="text-center m-5">
+        <div className="text-center mt-5">
           <Spinner />
         </div>
       ) : (
@@ -127,8 +128,8 @@ const EditGenderForm = ({ onGenderUpdate }: EditGenderFormProps) => {
                 className={`form-control ${
                   state.errors.gender ? "is-invalid" : ""
                 }`}
-                id="gender"
                 name="gender"
+                id="gender"
                 value={state.gender}
                 onChange={handleInputChange}
               />
@@ -137,7 +138,7 @@ const EditGenderForm = ({ onGenderUpdate }: EditGenderFormProps) => {
               )}
             </div>
             <div className="d-flex justify-content-end">
-              <Link to={"/"} className="btn btn-secondary me-1">
+              <Link to={"/genders"} className="btn btn-secondary me-1">
                 Back
               </Link>
               <button

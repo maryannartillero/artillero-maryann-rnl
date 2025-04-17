@@ -5,11 +5,11 @@ import GenderService from "../../../services/GenderService";
 import Spinner from "../../Spinner";
 import SpinnerSmall from "../../SpinnerSmall";
 
-interface DeleterGenderFormProps {
+interface DeleteGenderFormProps {
   onDeleteGender: (message: string) => void;
 }
 
-const DeleterGenderForm = ({ onDeleteGender }: DeleterGenderFormProps) => {
+const DeleteGenderForm = ({ onDeleteGender }: DeleteGenderFormProps) => {
   const { gender_id } = useParams();
 
   const [state, setState] = useState({
@@ -30,7 +30,7 @@ const DeleterGenderForm = ({ onDeleteGender }: DeleterGenderFormProps) => {
           }));
         } else {
           console.error(
-            "Unexpected status error while getting gender",
+            "Unexpected status error while getting gender: ",
             res.status
           );
         }
@@ -88,29 +88,27 @@ const DeleterGenderForm = ({ onDeleteGender }: DeleterGenderFormProps) => {
   return (
     <>
       {state.loadingGet ? (
-        <div className="text-center m-5">
+        <div className="text-center mt-5">
           <Spinner />
         </div>
       ) : (
         <form onSubmit={handleDestroyGender}>
-          <h3 className="text-center">
-            Are you sure you want to delete this gender?
-          </h3>
+          <h3>Are you sure do you want to delete this gender?</h3>
           <div className="form-group">
             <div className="mb-3">
               <label htmlFor="gender">Gender</label>
               <input
                 type="text"
                 className="form-control"
-                id="gender"
                 name="gender"
+                id="gender"
                 value={state.gender}
                 readOnly
               />
             </div>
             <div className="d-flex justify-content-end">
               <Link
-                to={"/"}
+                to={"/genders"}
                 className={`btn btn-secondary me-1 ${
                   state.loadingDestroy ? "disabled" : ""
                 }`}
@@ -119,10 +117,9 @@ const DeleterGenderForm = ({ onDeleteGender }: DeleterGenderFormProps) => {
               </Link>
               <button
                 type="submit"
-                className="btn btn-primary"
+                className="btn btn-danger"
                 disabled={state.loadingDestroy}
               >
-                {" "}
                 {state.loadingDestroy ? (
                   <>
                     <SpinnerSmall /> Deleting...
@@ -139,4 +136,4 @@ const DeleterGenderForm = ({ onDeleteGender }: DeleterGenderFormProps) => {
   );
 };
 
-export default DeleterGenderForm;
+export default DeleteGenderForm;

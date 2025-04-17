@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import ErrorHandler from "../../../handler/ErrorHandler";
-import { GenderFieldErrors } from "../../../interfaces/GenderFieldErrors";
+import GenderFieldErrors from "../../../interfaces/GenderFieldErrors";
 import GenderService from "../../../services/GenderService";
 import SpinnerSmall from "../../SpinnerSmall";
 
@@ -25,10 +25,12 @@ const AddGenderForm = ({ onGenderAdded }: AddGenderFormProps) => {
 
   const handleStoreGender = (e: FormEvent) => {
     e.preventDefault();
+
     setState((prevState) => ({
       ...prevState,
       loadingStore: true,
     }));
+
     GenderService.storeGender(state)
       .then((res) => {
         if (res.status === 200) {
@@ -37,6 +39,7 @@ const AddGenderForm = ({ onGenderAdded }: AddGenderFormProps) => {
             gender: "",
             errors: {} as GenderFieldErrors,
           }));
+
           onGenderAdded(res.data.message);
         } else {
           console.error(
@@ -62,6 +65,7 @@ const AddGenderForm = ({ onGenderAdded }: AddGenderFormProps) => {
         }));
       });
   };
+
   return (
     <>
       <form onSubmit={handleStoreGender}>
